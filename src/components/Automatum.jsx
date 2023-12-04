@@ -10,18 +10,18 @@ function Automatum() {
     const documentation =
         `LOS DATOS QUE ACEPTA SON LOS SIGUIENTES:
     \rVARIABLES(NO DECLARADAS):
-    > string nombreCadena;
-    > int nombreDigito;
-    > char nombreCaracter;
-    > bool nombreBooleano;
-    > float nombreFlotante;
+    > string nombreCadena ;
+    > int nombreDigito ;
+    > char nombreCaracter ;
+    > bool nombreBooleano ;
+    > float nombreFlotante ;
 
     \rVARIABLES(DECLARADAS):
-    > string nombreCadena = "texto";
-    > int nombreDigito = 1;
-    > char nombreCaracter = 'a';
-    > bool nombreBooleano = true;
-    > float nombreFlotante = 9.2;
+    > string nombreCadena = "texto" ;
+    > int nombreDigito = 1 ;
+    > char nombreCaracter = 'a' ;
+    > bool nombreBooleano = true ;
+    > float nombreFlotante = 9.2 ;
 
     \rSENTENCIA "IF":
     > if (parametro):

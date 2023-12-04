@@ -584,6 +584,7 @@ export function validateVariableDeclaration(value) {
                 return `ERROR UNEXPECTED: Nombre de variable no puede terminar en '_'`;
             }
             currentState = nextState;
+            console.log("Actual state of stack: ", currentState)
         }
     }
 
