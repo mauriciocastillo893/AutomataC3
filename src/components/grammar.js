@@ -569,49 +569,50 @@ const stateMap = {
     ],
 };
 
+const ERROR_STATE = "q0-error";
+
 export function validateVariableDeclaration(value) {
-    let currentState = "qe";
+    const stack = [];
+    stack.push("qe"); // Initial state
+
     const lines = value.split('\n');
 
     for (const line of lines) {
         const tokens = line.trim().split(' ');
         for (const token of tokens) {
-            const nextState = getNextState(currentState, token);
-            if (nextState === "q0-error") {
-                return `ERROR UNEXPECTED [${currentState}]: ${stateMap[currentState][0].error}`;
+            const currentState = stack.pop(); // Pop the current state from the stack
+            const nextState = getNextStateBasedOnToken(currentState, token);
+            if (nextState === ERROR_STATE) {
+                return `ERROR UNEXPECTED [${currentState}]: ${stateMap[currentState][0].error} (Token: ${token})`;
             }
-            if ((currentState === "q1" && token.endsWith('_')) || (currentState === "q010" && token.endsWith('_')) || (currentState === "q020" && token.endsWith('_')) || (currentState === "q030" && token.endsWith('_')) || (currentState === "q040" && token.endsWith('_')) || (currentState === "qe" && token.endsWith('_'))) {
-                return `ERROR UNEXPECTED: Nombre de variable no puede terminar en '_'`;
+
+            if (currentState === "qe" && token.endsWith('_')) {
+                return `ERROR UNEXPECTED: Nombre de variable no puede terminar en '_' (Token: ${token})`;
             }
-            currentState = nextState;
-            console.log("Actual state of stack: ", currentState)
+
+            stack.push(nextState); // Push the next state onto the stack
+            console.log(`Token: ${token}, Current State: ${nextState}`);
         }
     }
 
-    if (currentState === "qfd" || currentState === "q011" || currentState === "q021" || currentState === "q031" || currentState === "q041" || currentState === "q081") {
+    const acceptedStates = ["qfd", "q011", "q021", "q031", "q041", "q081"];
+    const initializationStates = ["q013", "q023", "q033", "q043", "q083"];
+    const validStates = ["qff", "qfs", "qfif", "qfwhile"];
+
+    const currentState = stack.pop(); // Final state
+
+    if (acceptedStates.includes(currentState)) {
         return "Declaration variable is accepted";
-    }
-    if (currentState === "q013" || currentState === "q023" || currentState === "q033" || currentState === "q043" || currentState === "q083") {
+    } else if (initializationStates.includes(currentState)) {
         return "Variable declaration and initialization is valid";
-    }
-    if (currentState === "qff") {
-        return "Function declaration is valid";
-    }
-    if (currentState === "qfs") {
-        return "Statement declaration function is valid";
-    }
-    if (currentState === "qfif") {
-        return "Statement Family IF is valid";
-    }
-    if (currentState === "qfwhile") {
-        return "While statement valid";
-    }
-    else {
+    } else if (validStates.includes(currentState)) {
+        return `${currentState} is valid`;
+    } else {
         return `Error: ${currentState}: ${stateMap[currentState][0].error}`;
     }
 }
 
-function getNextState(currentState, token) {
+function getNextStateBasedOnToken(currentState, token) {
     const stateTransitions = stateMap[currentState];
     if (stateTransitions) {
         for (const transition of stateTransitions) {
@@ -620,5 +621,5 @@ function getNextState(currentState, token) {
             }
         }
     }
-    return "q0-error";
+    return ERROR_STATE;
 }
