@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Playpen+Sans:wght@400;800&display=swap');
+
+.main-container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #20202D;
+    font-family: 'Concert One', sans-serif;
+}
+
+.header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 8vw;
+    width: 100%;
+    background-color: transparent;
+}
+
+.header-content{
+    background-color: #2E2E53;
+    color: #7C7C9F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 70%;
+    margin-inline: 80px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: 900;
+    font-size: 3vw;
+    text-shadow: 4px 4px 10px #20202D;
+    box-shadow: 4px 4px 1px #7C7C9F;
+}
+
+.content{
+    /* background-color: red; */
+    width: 100%;
+    padding: 40px 80px 80px;
+    display: flex;
+    /* flex-grow: 1; */
+    justify-content: space-between;
+}
+
+.first-content{
+    background-color: #2E2E53;
+    width: 46%;
+    height: 50vw;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+    .title-f-c{
+        background-color: #47477A;
+        color: #121233;
+        width: 100%;
+        height: 8%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2vw;
+    }
+
+    .title-f-c::before{
+        content: "DOCUMENTACIÓN";
+    }
+
+    .description{
+        background-color: #2E2E53;
+        color: #fff;
+        text-shadow: 2px 1px 1px #272759;
+        width: 100%;
+        height: 91.5%;
+        max-height: 91.5%;
+        overflow-y: auto;
+        border: none;
+        outline: none;
+        resize: none;
+        padding: 30px;
+        font-size: 1.2vw;
+        font-weight: bolder;
+    }
+
+.second-content{
+    /* background-color: red; */
+    width: 46%;
+    height: 50vw;
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.second-one-content{
+    background-color: #2E2E53;
+    width: 100%;
+    height: 55%;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+    .title-s-o-c{
+        background-color: #47477A;
+        color: #121233;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2vw;
+    }
+
+    .title-s-o-c::before{
+        content: "CÓDIGO";
+    }
+
+    .code{
+        background-color: #2E2E53;
+        color: #030315;
+        text-shadow: 2px 1px 1px #272759;
+        width: 100%;
+        height: 50%;
+        /* max-height: 84%; */
+        overflow-y: auto;
+        border: none;
+        outline: none;
+        resize: none;
+        padding: 30px;
+        font-size: 1.5vw;
+        font-weight: bolder;
+    }
+
+
+.second-two-content{
+    background-color: #2E2E53;
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+    .title-s-t-c{
+        background-color: #47477A;
+        color: #121233;
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2vw;
+    }
+
+    .title-s-t-c::before{
+        content: "TERMINAL";
+    }
+
+    .terminal{
+        background-color: #2E2E53;
+        color: #fff;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        height: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+        border: none;
+        outline: none;
+        resize: none;
+        padding: 30px;
+        font-size: 1.1vw;
+        font-weight: bolder;
+    }
