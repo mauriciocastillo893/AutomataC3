@@ -591,7 +591,7 @@ export function validateVariableDeclaration(value) {
             }
 
             stack.push(nextState); // Push the next state onto the stack
-            console.log(`Token: ${token}, Current State: ${nextState}`);
+            console.log(`Current Stack Value: ${token + " " + stack}`);
         }
     }
 
